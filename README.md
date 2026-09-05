@@ -120,3 +120,208 @@ De manera simplificada:
 git fetch → Descargar cambios
 
 git pull → Descargar + integrar cambios
+
+### 6.	¿Qué es un branch (rama) en Git y cómo Git gestiona los punteros a commits? 
+Un branch o rama es una línea independiente de desarrollo dentro de un repositorio.
+
+Las ramas permiten trabajar en diferentes funcionalidades sin modificar directamente la rama principal.
+
+Por ejemplo:
+
+git branch nueva-funcionalidad
+
+Para cambiar a esa rama:
+
+git switch nueva-funcionalidad
+
+También podemos crear y cambiar de rama en un solo comando:
+
+git switch -c nueva-funcionalidad
+
+Git administra las ramas mediante punteros o referencias a commits. Una rama básicamente apunta al último commit de esa línea de trabajo.
+
+Cuando realizamos un nuevo commit, el puntero de la rama avanza al nuevo commit.
+
+### 7.	¿Cómo se realiza un merge y qué conflictos pueden surgir? ¿Cómo se resuelven? 
+Un merge permite combinar los cambios de una rama con otra.
+
+Por ejemplo, si estamos en la rama main y queremos incorporar una rama llamada desarrollo:
+
+git switch main
+git merge desarrollo
+
+Git intentará combinar automáticamente los cambios.
+
+Conflictos
+
+Un conflicto puede aparecer cuando dos ramas modifican la misma parte de un archivo de maneras diferentes.
+
+Git marcará el conflicto dentro del archivo, por ejemplo:
+
+Código de la rama actual
+Código de la otra rama
+
+Para resolverlo debemos:
+
+Abrir el archivo.
+Decidir qué código conservar.
+Eliminar las marcas del conflicto.
+Guardar el archivo.
+Agregarlo al staging.
+git add archivo.java
+
+Finalmente se completa el merge:
+
+git commit
+
+### 8.	¿Cómo funciona el área de staging (git add) y qué pasa si omito este paso? 
+El área de staging permite seleccionar los cambios que serán incluidos en el próximo commit.
+
+Por ejemplo:
+
+git add Main.java
+
+Esto coloca los cambios de Main.java en staging.
+
+También podemos agregar todos los archivos modificados:
+
+git add .
+
+Después realizamos:
+
+git commit -m "Actualizar proyecto"
+
+Si omitimos git add, los cambios permanecerán en el directorio de trabajo y no serán incluidos en el commit.
+
+Por ejemplo:
+
+Modificar archivo
+       ↓
+Working Directory
+       ↓
+git add
+       ↓
+Staging
+       ↓
+git commit
+       ↓
+Repository
+
+### 9.	¿Qué es el archivo .gitignore y cómo influye en el seguimiento de archivos? 
+El archivo .gitignore indica a Git qué archivos o carpetas no deben ser rastreados por el repositorio.
+
+Es útil para evitar subir archivos innecesarios, archivos temporales, configuraciones personales o información que no debería formar parte del proyecto.
+
+Por ejemplo:
+
+*.class
+*.log
+.env
+target/
+
+Esto puede indicar que Git ignore archivos .class, archivos .log, el archivo .env y la carpeta target.
+
+Un ejemplo de .gitignore para un proyecto Java podría ser:
+
+*.class
+out/
+target/
+
+Es importante utilizar .gitignore porque ayuda a mantener el repositorio organizado.
+
+### 10.	¿Cuál es la diferencia entre un “commit amend” (--amend) y un nuevo commit? 
+El comando:
+
+git commit --amend
+
+permite modificar el commit más reciente.
+
+Por ejemplo, podemos utilizarlo para corregir el mensaje del último commit o agregar un archivo que olvidamos incluir.
+
+git add archivo.java
+git commit --amend
+
+En cambio, un nuevo commit crea un nuevo punto en el historial.
+
+Por ejemplo:
+
+git commit -m "Agregar funcionalidad"
+
+La diferencia principal es:
+
+--amend → Modifica el último commit
+
+Nuevo commit → Crea otro commit en el historial
+
+Se debe tener cuidado con --amend cuando el commit ya fue enviado a un repositorio remoto, porque puede modificar el historial compartido.
+
+### 11.	¿Cómo se utiliza git stash y en qué escenarios es útil? 
+git stash permite guardar temporalmente cambios que todavía no queremos convertir en un commit.
+
+Por ejemplo, estamos trabajando en una funcionalidad y tenemos cambios sin terminar, pero necesitamos cambiar de rama.
+
+Podemos utilizar:
+
+git stash
+
+Git guarda temporalmente esos cambios y deja limpio el directorio de trabajo.
+
+Después podemos recuperarlos mediante:
+
+git stash pop
+
+Un ejemplo sería:
+
+Estoy trabajando
+      ↓
+Cambios sin terminar
+      ↓
+git stash
+      ↓
+Directorio limpio
+      ↓
+Cambio de rama
+      ↓
+git stash pop
+      ↓
+Recupero mis cambios
+
+Es especialmente útil cuando necesitamos cambiar temporalmente de tarea sin realizar un commit incompleto.
+
+### 12.	¿Qué mecanismos ofrece Git para deshacer cambios (por ejemplo, git reset, git revert, git checkout)? 
+Git proporciona diferentes mecanismos dependiendo del tipo de cambio que queremos deshacer.
+
+git reset
+
+Puede mover la referencia de una rama hacia otro commit y modificar el estado del staging o del directorio de trabajo dependiendo de la opción utilizada.
+
+Por ejemplo:
+
+git reset --soft HEAD~1
+
+Puede utilizarse para deshacer el último commit manteniendo los cambios preparados.
+
+git revert
+
+Crea un nuevo commit que invierte los cambios realizados por un commit anterior.
+
+git revert <commit>
+
+Es una opción apropiada cuando queremos conservar el historial.
+
+git restore
+
+Permite restaurar archivos a un estado anterior.
+
+Por ejemplo:
+
+git restore archivo.java
+
+Por lo tanto, estos comandos no son exactamente iguales:
+
+reset  → Mueve referencias y puede modificar staging
+
+revert → Crea un nuevo commit que deshace otro
+
+restore → Recupera archivos
+
