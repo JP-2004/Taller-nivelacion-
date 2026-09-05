@@ -325,3 +325,63 @@ revert → Crea un nuevo commit que deshace otro
 
 restore → Recupera archivos
 
+### 13.¿Cómo funciona la configuración de remotos (origin, upstream) y qué comandos uso para gestión de forks? 
+Un remote es una referencia a un repositorio remoto, normalmente ubicado en un servidor como GitHub.
+
+Cuando clonamos un repositorio normalmente se crea un remoto llamado:
+
+origin
+
+Podemos consultar los remotos con:
+
+git remote -v
+
+Un proyecto puede tener más de un remoto.
+
+Por ejemplo:
+
+origin
+upstream
+
+En un proyecto basado en un fork, normalmente:
+
+origin → nuestro repositorio.
+upstream → repositorio original.
+
+Para agregar upstream:
+
+git remote add upstream URL_DEL_REPOSITORIO
+
+Para obtener los cambios del repositorio original:
+
+git fetch upstream
+
+Después podemos integrar esos cambios en nuestra rama.
+
+### 14.¿Cómo puedo inspeccionar el historial de commits (por ejemplo, git log, git diff, git show)? 
+Git proporciona diferentes comandos para revisar el historial.
+
+git log
+
+Muestra el historial de commits:
+
+git log
+
+También podemos utilizar:
+
+git log --oneline
+
+para obtener una versión más resumida.
+
+git diff
+
+Permite comparar cambios.
+
+git diff
+git show
+
+Permite observar los detalles de un commit específico:
+
+git show <commit>
+
+Estos comandos permiten conocer qué cambios se han realizado y revisar la evolución del proyecto.
