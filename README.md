@@ -385,3 +385,268 @@ Permite observar los detalles de un commit específico:
 git show <commit>
 
 Estos comandos permiten conocer qué cambios se han realizado y revisar la evolución del proyecto.
+
+## Programación 
+
+### 15.¿Cuáles son los tipos de datos primitivos en Java? 
+Java tiene ocho tipos de datos primitivos:
+
+Tipo	Descripción	Ejemplo
+byte	Entero pequeño	byte edad = 20;
+short	Entero	short numero = 1000;
+int	Entero común	int edad = 20;
+long	Entero grande	long poblacion = 1000000L;
+float	Número decimal	float precio = 10.5f;
+double	Número decimal de mayor precisión	double promedio = 4.5;
+char	Un carácter	char letra = 'A';
+boolean	Verdadero o falso	boolean activo = true;
+
+Por ejemplo:
+
+int edad = 20;
+double salario = 2500000.50;
+char inicial = 'J';
+boolean estudiante = true;
+
+### 16.¿Cómo funcionan las estructuras de control de flujo como if, else, switch y bucles en Java? 
+Las estructuras de control permiten determinar cómo se ejecutan las instrucciones de un programa.
+
+if
+
+Permite ejecutar código cuando se cumple una condición.
+
+if (edad >= 18) {
+    System.out.println("Es mayor de edad");
+}
+else
+
+Permite ejecutar una alternativa cuando la condición del if no se cumple.
+
+if (edad >= 18) {
+    System.out.println("Mayor de edad");
+} else {
+    System.out.println("Menor de edad");
+}
+switch
+
+Permite seleccionar una opción entre diferentes casos.
+
+switch (opcion) {
+    case 1:
+        System.out.println("Suma");
+        break;
+
+    case 2:
+        System.out.println("Resta");
+        break;
+
+    default:
+        System.out.println("Opción no válida");
+}
+Bucles
+
+Los bucles permiten repetir instrucciones.
+
+Por ejemplo, for:
+
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+
+También existe while:
+
+while (contador < 5) {
+    contador++;
+}
+
+Estas estructuras permiten controlar las decisiones y repeticiones dentro de un programa.
+
+### 17.¿Por qué es importante usar nombres significativos para variables y métodos? 
+Es importante utilizar nombres significativos porque hace que el código sea más fácil de leer, entender y mantener.
+
+Por ejemplo, no es recomendable:
+
+int x = 20;
+
+si esa variable realmente representa una edad.
+
+Es más claro escribir:
+
+int edad = 20;
+
+De la misma manera, un método:
+
+calcularPromedio()
+
+es más descriptivo que:
+
+calc()
+
+Los nombres significativos permiten que otros programadores puedan comprender más fácilmente qué hace el código.
+
+También ayudan a reducir errores y facilitan el mantenimiento del programa.
+
+### 18.¿Qué es la Programación Orientada a Objetos (POO)? 
+La Programación Orientada a Objetos (POO) es un paradigma de programación que organiza los programas utilizando objetos y clases.
+
+Una clase funciona como un modelo o plantilla que define características y comportamientos.
+
+Un objeto es una instancia de una clase.
+
+Por ejemplo:
+
+class Persona {
+    String nombre;
+    int edad;
+
+    void saludar() {
+        System.out.println("Hola");
+    }
+}
+
+Podemos crear un objeto:
+
+Persona persona = new Persona();
+
+persona.nombre = "Juan";
+persona.edad = 20;
+
+persona.saludar();
+
+En este caso, Persona es la clase y persona es un objeto.
+
+La POO permite organizar mejor programas grandes y facilita la reutilización y mantenimiento del código.
+
+### 19.¿Cuáles son los cuatro pilares de la Programación Orientada a Objetos? 
+Los cuatro pilares principales de la POO son:
+
+1. Encapsulamiento
+
+Consiste en proteger los datos internos de una clase y controlar la forma en que se accede a ellos.
+
+Por ejemplo:
+
+class Cuenta {
+    private double saldo;
+
+    public double getSaldo() {
+        return saldo;
+    }
+}
+2. Abstracción
+
+Consiste en mostrar solamente los aspectos importantes de un objeto y ocultar detalles innecesarios de implementación.
+
+3. Herencia
+
+Permite que una clase pueda adquirir características y comportamientos de otra clase.
+
+class Animal {
+    void comer() {
+        System.out.println("El animal está comiendo");
+    }
+}
+
+class Perro extends Animal {
+}
+
+Perro hereda de Animal.
+
+4. Polimorfismo
+
+Permite que una misma operación pueda comportarse de diferentes maneras dependiendo del objeto que la utilice.
+
+Por ejemplo, diferentes clases pueden implementar un mismo método de manera diferente.
+
+Los cuatro pilares son:
+
+Encapsulamiento
+Abstracción
+Herencia
+Polimorfismo
+
+### 20.¿Qué es la herencia en POO y cómo se utiliza en Java? 
+La herencia permite crear una clase nueva a partir de otra clase existente.
+
+La clase que proporciona las características se conoce como clase padre o superclase, mientras que la nueva clase se conoce como clase hija o subclase.
+
+En Java se utiliza la palabra clave extends.
+
+Ejemplo:
+
+class Animal {
+
+    void comer() {
+        System.out.println("El animal está comiendo");
+    }
+}
+
+class Perro extends Animal {
+
+    void ladrar() {
+        System.out.println("El perro está ladrando");
+    }
+}
+
+Podemos crear un objeto:
+
+Perro perro = new Perro();
+
+perro.comer();
+perro.ladrar();
+
+El objeto perro puede utilizar el método comer() porque lo heredó de Animal.
+
+La herencia permite reutilizar código y establecer relaciones entre clases.
+
+### 21.¿Qué son los modificadores de acceso y cuáles son los más comunes en Java? 
+Los modificadores de acceso determinan desde qué partes del programa se puede acceder a una clase, atributo o método.
+
+Los principales son:
+
+Modificador	Acceso
+public	Accesible desde cualquier clase
+private	Accesible únicamente dentro de la misma clase
+protected	Accesible dentro del mismo paquete y mediante herencia
+Sin modificador	Accesible dentro del mismo paquete
+public
+public class Persona {
+}
+
+La clase o miembro puede ser accesible desde otras partes del programa según las reglas de Java.
+
+private
+private double saldo;
+
+El atributo solamente puede ser utilizado directamente dentro de su propia clase.
+
+protected
+
+Se utiliza principalmente cuando existe una relación de herencia y permite acceso dentro del mismo paquete o desde subclases.
+
+El uso adecuado de estos modificadores ayuda a implementar el encapsulamiento.
+
+### 22.¿Qué es una variable de entorno y por qué son importantes para Java o la programación en general? 
+Una variable de entorno es un valor almacenado por el sistema operativo que puede ser utilizado por diferentes programas para obtener información de configuración.
+
+En Java, una de las variables de entorno más conocidas es:
+
+JAVA_HOME
+
+Esta variable puede indicar dónde está instalada la versión del JDK.
+
+Por ejemplo, una configuración podría indicar:
+
+JAVA_HOME=C:\Program Files\Java\jdk-21
+
+Otra configuración importante puede ser el PATH, que permite que el sistema encuentre determinados comandos desde la terminal.
+
+Las variables de entorno son importantes porque permiten configurar programas sin tener que escribir esa información directamente dentro del código.
+
+Por ejemplo, en lugar de colocar una contraseña directamente en un programa:
+
+String password = "123456";
+
+es más seguro utilizar una variable de entorno y obtenerla desde el sistema.
+
+Esto permite separar la configuración del código fuente.
